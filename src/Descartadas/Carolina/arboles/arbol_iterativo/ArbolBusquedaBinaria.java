@@ -1,4 +1,4 @@
-package Descartadas.Carolina.arbol.arbol_iterativo;
+package Descartadas.Carolina.arboles.arbol_iterativo;
 
 import Descartadas.Carolina.estructuras_necesarias.ListSE;
 import Descartadas.Carolina.estructuras_necesarias.Queue;

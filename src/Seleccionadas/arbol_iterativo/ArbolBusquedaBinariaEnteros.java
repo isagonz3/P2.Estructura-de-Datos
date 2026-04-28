@@ -1,4 +1,4 @@
-package Descartadas.Carolina.arbol.arbol_iterativo;
+package Seleccionadas.arbol_iterativo;
 
 public class ArbolBusquedaBinariaEnteros extends ArbolBusquedaBinaria<Integer> { //árbol de enteros que hereda del árbol genérico
 
