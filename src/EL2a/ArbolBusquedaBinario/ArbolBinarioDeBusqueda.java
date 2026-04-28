@@ -15,7 +15,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         this.raiz = raiz;
     }
 
-    private NodoArbolBinario<T> searchNodo(NodoArbolBinario<T> nodo, T dato) {
+    protected NodoArbolBinario<T> searchNodo(NodoArbolBinario<T> nodo, T dato) {
         if (nodo == null) {
             return null;
         }

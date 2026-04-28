@@ -1,6 +1,6 @@
 package EL2a.ArbolBusquedaBinario;
 
-import java.util.List;
+import TADs.Lista;
 
 public class TestArbolEnterosEnOrden {
     public static void main(String[] args) {
@@ -19,24 +19,27 @@ public class TestArbolEnterosEnOrden {
 
         //Suma de nodos en el recorrido Inorden
         int sumaInorden = 0;
-        for(NodoArbolBinario<Integer> nodo : arbol.getListaInorden()){
-            sumaInorden += nodo.getDato();
+        Lista<NodoArbolBinario<Integer>> nodoInorden = arbol.getListaInorden();
+        for(int i = 0; i < arbol.getListaInorden().getSize(); i++){
+            sumaInorden += nodoInorden.get(i).getDato();
         }
         System.out.println("Suma inorden: " + sumaInorden);
         System.out.println("--------------------");
 
         //Suma de nodos en el recorrido Preorden
         int sumaPreorden = 0;
-        for(NodoArbolBinario<Integer> nodo : arbol.getListaPreorden()){
-            sumaPreorden += nodo.getDato();
+        Lista<NodoArbolBinario<Integer>> nodoPreorden = arbol.getListaPreorden();
+        for(int i = 0; i < arbol.getListaPreorden().getSize(); i++){
+            sumaPreorden += nodoPreorden.get(i).getDato();
         }
         System.out.println("Suma preorden: " + sumaPreorden);
         System.out.println("--------------------");
 
         //Suma de nodos en el recorrido Postorden
         int sumaPostorden = 0;
-        for(NodoArbolBinario<Integer> nodo : arbol.getListaPostorden()){
-            sumaPostorden += nodo.getDato();
+        Lista<NodoArbolBinario<Integer>> nodoPostorden = arbol.getListaPostorden();
+        for(int i = 0; i < arbol.getListaPostorden().getSize(); i++){
+            sumaPostorden += nodoPostorden.get(i).getDato();
         }
         System.out.println("Suma postorden: " + sumaPostorden);
         System.out.println("--------------------");
@@ -74,12 +77,12 @@ public class TestArbolEnterosEnOrden {
         System.out.println("--------------------");
 
         //Obtener el camino hasta el valor 110
-        List<Integer> camino = arbol.getCamino(arbol.raiz, 110);
+        Lista<Integer> camino = arbol.getCamino(arbol.raiz, 110);
         System.out.println("Camino hasta el valor 110: " + camino);
         System.out.println("--------------------");
 
         //Obtener la longitud del camino hasta el valor 110
-        int longCamino = camino.size() -1;
+        int longCamino = camino.getSize() -1;
         System.out.println("Longitud del camino hasta el valor 110: " + longCamino);
         System.out.println("--------------------");
 
