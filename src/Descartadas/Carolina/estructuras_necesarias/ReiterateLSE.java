@@ -1,4 +1,4 @@
-package Carolina.estructuras_necesarias;
+package Descartadas.Carolina.estructuras_necesarias;
 
 public class ReiterateLSE <T> implements MyIterate<T> {
 

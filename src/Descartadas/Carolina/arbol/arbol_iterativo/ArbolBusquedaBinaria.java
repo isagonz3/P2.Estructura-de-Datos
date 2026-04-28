@@ -1,8 +1,8 @@
-package Carolina.arbol.arbol_iterativo;
+package Descartadas.Carolina.arbol.arbol_iterativo;
 
-import Carolina.estructuras_necesarias.ListSE;
-import Carolina.estructuras_necesarias.Queue;
-import Carolina.estructuras_necesarias.Stack;
+import Descartadas.Carolina.estructuras_necesarias.ListSE;
+import Descartadas.Carolina.estructuras_necesarias.Queue;
+import Descartadas.Carolina.estructuras_necesarias.Stack;
 
 public class ArbolBusquedaBinaria<T extends Comparable<T>> {
 

@@ -1,4 +1,4 @@
-package Carolina.arbol.arbol_iterativo;
+package Descartadas.Carolina.arbol.arbol_iterativo;
 
 public class NodoArbol<T> {
 

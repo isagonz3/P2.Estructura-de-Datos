@@ -1,4 +1,4 @@
-package Carolina.estructuras_necesarias;
+package Descartadas.Carolina.estructuras_necesarias;
 
 public class ListSE<T extends Comparable<T>> implements MyList<T> {
 

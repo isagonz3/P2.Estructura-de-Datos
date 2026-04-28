@@ -1,6 +1,6 @@
-package Carolina.arbol.arbol_iterativo;
+package Descartadas.Carolina.arbol.arbol_iterativo;
 
-import Carolina.estructuras_necesarias.ListSE;
+import Descartadas.Carolina.estructuras_necesarias.ListSE;
 
 public class MainIterativo {
 
