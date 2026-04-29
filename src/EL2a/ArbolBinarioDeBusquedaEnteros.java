@@ -1,4 +1,4 @@
-package EL2a.ArbolBusquedaBinario;
+package EL2a;
 
 public class ArbolBinarioDeBusquedaEnteros extends ArbolBinarioDeBusqueda<Integer> {
     public ArbolBinarioDeBusquedaEnteros() {

@@ -2,45 +2,55 @@ package EL2b;
 
 import TADs.Lista;
 
-public class Nodo<T extends Comparable<T>> implements Comparable<Nodo<T>> {
+public class Nodo implements Comparable<Nodo> {
+    protected String dato;
     protected String type;
-    protected T dato;
-    protected Lista<Arco<T>> arcos;
+    Lista<Arco> arcosOrigen;
+    Lista<Arco> arcosDestino;
 
-    public Nodo(String type, T dato) {
+    public Nodo(String type, String dato) {
         this.type = type;
         this.dato = dato;
-        this.arcos = new Lista<>();
+        this.arcosOrigen = new Lista<>();
+        this.arcosDestino = new Lista<>();
+    }
+
+    public String getDato() {
+        return dato;
     }
 
     public String getType() {
         return type;
     }
 
-    public T getDato() {
-        return dato;
+    public Lista<Arco> getArcosOrigen() {
+        return arcosOrigen;
     }
 
-    public Lista<Arco<T>> getArcos() {
-        return arcos;
+    public Lista<Arco> getArcosDestino() {
+        return arcosDestino;
     }
 
-    @Override
-    public int compareTo(Nodo<T> nodo) {
-        if(nodo == null){
-            throw new NullPointerException();
-        }
-        int cmp = type.compareTo(nodo.type);
-        if (cmp != 0) return cmp;
-        return dato.compareTo(nodo.dato);
-    }
 
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o == null  || getClass() != o.getClass()) return false;
-        Nodo<T> nodo = (Nodo<T>) o;
-        return type.equals(nodo.type) && dato.equals(nodo.dato);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Nodo nodo = (Nodo) o;
+        return this.type.equals(nodo.type) && this.dato.equals(nodo.dato);
     }
 
+    @Override
+    public int compareTo(Nodo o) {
+        int cmp = this.type.compareTo(o.type);
+        if (cmp == 0) {
+            return this.dato.compareTo(o.dato);
+        }
+        return cmp;
+    }
+
+    @Override
+    public String toString() {
+        return type + " : " + dato;
+    }
 }

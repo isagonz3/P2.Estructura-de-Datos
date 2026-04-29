@@ -1,4 +1,4 @@
-package EL2a.ArbolBusquedaBinario;
+package EL2a;
 
 import TADs.Cola;
 import TADs.Lista;

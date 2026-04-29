@@ -2,21 +2,20 @@ package EL2b;
 
 import TADs.Lista;
 
-public class GrafoDeConocimiento<T extends Comparable<T>> {
-    Lista<Nodo<T>> nodos;
-    Lista<Arco<T>> arcos;
+public class GrafoDeConocimiento {
+    Lista<Nodo> nodos;
+    Lista<Arco> arcos;
 
     public GrafoDeConocimiento() {
         this.nodos = new Lista<>();
         this.arcos = new Lista<>();
     }
 
-    public void addNodo(Nodo<T> nodo) {
+    public void addNodo(Nodo nodo) {
         if(!nodos.contains(nodo)) this.nodos.add(nodo);
-
     }
 
-    public int getIndex(Nodo<T> nodo) {
+    public int getIndex(Nodo nodo) {
 
         for (int i = 0; i < this.nodos.getSize(); i++) {
             if (this.nodos.get(i).equals(nodo)) {
@@ -26,10 +25,10 @@ public class GrafoDeConocimiento<T extends Comparable<T>> {
         return -1;
     }
 
-    public void addArco(String predicate, Nodo<T> subject, Nodo<T> object) {
+    public void addArco(String predicate, Nodo subject, Nodo object) {
 
-        Nodo<T> subjectNuevo = getNodo(subject.getType(), subject.getDato());
-        Nodo<T> objectNuevo = getNodo(object.getType(), object.getDato());
+        Nodo subjectNuevo = getNodo(subject.getType(), subject.getDato());
+        Nodo objectNuevo = getNodo(object.getType(), object.getDato());
 
         if(!nodos.contains(subjectNuevo)) {
             nodos.add(subjectNuevo);
@@ -38,81 +37,79 @@ public class GrafoDeConocimiento<T extends Comparable<T>> {
             nodos.add(objectNuevo);
         }
 
-        Arco<T> arco = new Arco<>(predicate, subjectNuevo, objectNuevo);
+        Arco arco = new Arco(predicate, subjectNuevo, objectNuevo);
         if(!arcos.contains(arco)) {
             this.arcos.add(arco);
-            subjectNuevo.getArcos().add(arco);
+            subjectNuevo.getArcosOrigen().add(arco);
         }
-
     }
 
-    public Nodo<T> getNodo(String type, T dato) {
+    public Nodo getNodo(String type, String dato) {
         for (int i = 0; i < this.nodos.getSize(); i++) {
-            Nodo<T> aux = this.nodos.get(i);
+            Nodo aux = this.nodos.get(i);
             if(aux.getDato().equals(dato) && aux.getType().equals(type)) {
                 return aux; //Si el nodo ya existe en el grafo, lo devolvemos como está
             }
         }
         //Si el nodo no existe en el grafo, creamos un nuevo nodo
-        Nodo<T> nuevoNodo = new Nodo<>(type, dato);
+        Nodo nuevoNodo = new Nodo(type, dato);
         this.nodos.add(nuevoNodo);
         return nuevoNodo;
     }
 
-    public Arco<T> getArco(String predicate, Nodo<T> subject, Nodo<T> object) {
+    public Arco getArco(String predicate, Nodo subject, Nodo object) {
         for (int i = 0; i < this.arcos.getSize(); i++) {
-            Arco<T> aux = this.arcos.get(i);
-            if(aux.getSubject().equals(subject) && aux.getObject().equals(object) && aux.getPredicate().equals(predicate)){
+            Arco aux = this.arcos.get(i);
+            if(aux.getOrigen().equals(subject) && aux.getDestino().equals(object) && aux.getPredicate().equals(predicate)){
                     return aux;
             }
         }
         return null;
     }
 
-    public Lista<Nodo<T>> getNodos() {
+    public Lista<Nodo> getNodos() {
         return nodos;
     }
 
-    public Lista<Arco<T>> getArcos() {
+    public Lista<Arco> getArcos() {
         return arcos;
     }
 
-    public Lista<Nodo<T>> getVecinos(Nodo<T> nodo) {
-        Lista<Nodo<T>> vecinos = new Lista<>();
+    public Lista<Nodo> getVecinos(Nodo nodo) {
+        Lista<Nodo> vecinos = new Lista<>();
 
         for (int i = 0; i < arcos.getSize(); i++) {
-            Arco<T> arco = arcos.get(i);
+            Arco arco = arcos.get(i);
 
-            if(arco.getSubject().equals(nodo)){
-                vecinos.add(arco.getObject());
+            if(arco.getOrigen().equals(nodo)){
+                vecinos.add(arco.getDestino());
             }
         }
         return vecinos;
     }
 
-    public Lista<Nodo<T>> getObjects(String predicate, Nodo<T> subject) {
-        Lista<Nodo<T>> objects = new Lista<>();
+    public Lista<Nodo> getObjects(String predicate, Nodo subject) {
+        Lista<Nodo> objects = new Lista<>();
 
         for(int i = 0; i < this.arcos.getSize(); i++){
-            Arco<T> arco = arcos.get(i);
+            Arco arco = arcos.get(i);
 
-            if(arco.getSubject().equals(subject) && arco.getPredicate().equals(predicate)){
-                objects.add(arco.getObject());
+            if(arco.getOrigen().equals(subject) && arco.getPredicate().equals(predicate)){
+                objects.add(arco.getDestino());
             }
         }
         return objects;
     }
 
-    public boolean isGrafoDisjunto(GrafoDeConocimiento<T> grafo) {
-        int n = grafo.getNodos().getSize();
-
+    public boolean isGrafoDisjunto() {
+        int n = nodos.getSize();
         if(n == 0){
             return false;
         }
 
         boolean[] nodoVisitado = new boolean[n];
-        Nodo<T> origen = grafo.getNodos().get(0);
-        DFSNodos(grafo,origen,nodoVisitado);
+
+        DFSNodos(0,nodoVisitado);
 
         for(int i = 0; i < n; i++){
             if(!nodoVisitado[i]){
@@ -125,18 +122,29 @@ public class GrafoDeConocimiento<T extends Comparable<T>> {
     //Creamos un metodo auxiliar DFS para marcar todos los nodos que se pueden
     //visitar. Si en el grafo hay nodos no visitables, es disjunto.
 
-    private void DFSNodos(GrafoDeConocimiento<T> grafo, Nodo<T> actual, boolean[] nodoVisitado) {
+    private void DFSNodos(int index, boolean[] nodoVisitado) {
 
-        int index = grafo.getIndex(actual);
-        if(index == -1 || nodoVisitado[index]) { //Si no hay nodo o ya se ha visitado antes
-            return;                              //no podemos visitar el nodo actual
+        if(index < 0 || index > nodos.getSize()) {
+            return;
         }
 
         nodoVisitado[index] = true;
-        Lista<Nodo<T>> vecinos = grafo.getVecinos(actual);
+
+        Lista<Nodo> vecinos = getVecinos(nodos.get(index));
         for(int i = 0; i < vecinos.getSize(); i++){
-            DFSNodos(grafo, vecinos.get(i), nodoVisitado);
+            int indexVecino = getIndex(vecinos.get(i));
+            if(indexVecino != -1){
+                DFSNodos(indexVecino, nodoVisitado);
+            }
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nodos: ").append(nodos).append("\n");
+        sb.append("Arcos: ").append(arcos).append("\n");
+        return sb.toString();
     }
 
 }

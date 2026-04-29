@@ -1,4 +1,4 @@
-package EL2a.ArbolBusquedaBinario;
+package EL2a;
 
 
 /*Creamos una clase para poder guardar los valores de 0 a 128 de forma aleatoria.

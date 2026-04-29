@@ -1,15 +1,19 @@
-package EL2a.ArbolBusquedaBinario;
+package EL2a;
 
 import TADs.Lista;
 
-public class TestArbolEnterosEnOrden {
+public class TestArbolEnterosAleatorio {
     public static void main(String[] args) {
 
         ArbolBinarioDeBusquedaEnteros arbol = new ArbolBinarioDeBusquedaEnteros();
 
-        for(int i=0; i<=128; i++){
-            arbol.add(i);
+        //Añadimos los numeros de forma aleatoria mediante Fisher-Yates
+        int[] numsAleat = FishYat.aleatorio(129);
+
+        for(int num : numsAleat){
+            arbol.add(num);
         }
+
         //Calculamos la suma total de los nodos
         int sumaEnteros = arbol.getSuma();
         System.out.println("Suma: " + sumaEnteros);
@@ -45,11 +49,10 @@ public class TestArbolEnterosEnOrden {
         System.out.println("--------------------");
 
         //Comprobamos que el resultado de la suma coincide para todos los casos
-        if(sumaEnteros == sumaInorden && sumaEnteros == sumaPreorden && sumaEnteros == sumaPostorden){
+        if (sumaEnteros == sumaInorden && sumaEnteros == sumaPreorden && sumaEnteros == sumaPostorden) {
             System.out.println("El resultado es igual en todos los recorridos");
             System.out.println("--------------------");
-        }
-        else{
+        } else {
             System.out.println("El resultado no coincide");
         }
 
@@ -62,11 +65,10 @@ public class TestArbolEnterosEnOrden {
         System.out.println("Suma por subarboles: " + sumaSubArboles);
         System.out.println("--------------------");
 
-        if(sumaSubArboles == sumaEnteros){
+        if (sumaSubArboles == sumaEnteros) {
             System.out.println("El resultado coincide sumando por subarboles");
             System.out.println("--------------------");
-        }
-        else{
+        } else {
             System.out.println("El resultado no coincide");
             System.out.println("--------------------");
         }
@@ -82,9 +84,15 @@ public class TestArbolEnterosEnOrden {
         System.out.println("--------------------");
 
         //Obtener la longitud del camino hasta el valor 110
-        int longCamino = camino.getSize() -1;
+        int longCamino = camino.getSize() - 1;
         System.out.println("Longitud del camino hasta el valor 110: " + longCamino);
         System.out.println("--------------------");
 
+        /*Los valores de las sumas no cambian con el orden aleatorio, pero la altura,
+        * el camino, y la longitud del camino cambian segun la posicion aleatoria de los
+        * valores.*/
+
     }
 }
+
+

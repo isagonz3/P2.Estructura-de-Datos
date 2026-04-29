@@ -1,4 +1,4 @@
-package EL2a.ArbolBusquedaBinario;
+package EL2a;
 
 public class NodoArbolBinario<T  extends Comparable<T>> implements Comparable<NodoArbolBinario<T>> {
 
