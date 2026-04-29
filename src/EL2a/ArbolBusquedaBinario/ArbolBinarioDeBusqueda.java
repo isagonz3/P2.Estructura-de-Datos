@@ -235,7 +235,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     * de ese hijo al nodo a eliminar, y se elimina el hijo en orden central del
     * sub-arbol derecho.*/
 
-    public void deleteNodoGrado2(NodoArbolBinario<T> nodo) {
+    private void deleteNodoGrado2(NodoArbolBinario<T> nodo) {
         NodoArbolBinario<T> aux = buscarMin(nodo.der);
         nodo.dato = aux.dato;
         nodo.der = deleteNodo(nodo.der, aux.dato);
