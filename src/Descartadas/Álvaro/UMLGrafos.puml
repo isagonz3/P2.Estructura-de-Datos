@@ -1,0 +1,82 @@
+@startuml
+
+' ========= GRAFOS BASE =========
+
+
+class Graph<DN, DA> {
+    - nodes: IndexedList<GraphNode<DN>>
+    - edges: IndexedList<EdgeGraph<DN, DA>>
+    + isEmpty(): boolean
+    + clear(): void
+    + addNode(data: DN): void
+    + addEdge(origin: DN, destination: DN, data: DA): void
+    + removeNode(data: DN): void
+    + removeEdge(origin: DN, destination: DN): void
+    + getNode(data: DN): GraphNode<DN>
+    + getEdge(origin: DN, destination: DN): EdgeGraph<DN, DA>
+    + neighbors(node: DN): IndexedList<GraphNode<DN>>
+    + edgesFrom(node: DN): IndexedList<EdgeGraph<DN, DA>>
+    + edgesTo(node: DN): IndexedList<EdgeGraph<DN, DA>>
+    + BFS(start: DN): IndexedList<DN>
+    + DFS(start: DN): IndexedList<DN>
+    + shortestPath(start: DN, end: DN): IndexedList<DN>
+    + isDisjoint(): boolean
+}
+
+class RDF {
+    - graph: Graph<String, String>
+    + addTriplet(s: String, p: String, o: String): void
+    + loadFromFile(ruta: String): void
+    + saveToFile(ruta: String): void
+    + getObjects(subject: String): IndexedList<String>
+    + getSubjects(object: String): IndexedList<String>
+    + getObjectsByPredicate(subject: String, predicate: String): IndexedList<String>
+    + getNodesWithSamePredicateAndObject(subject: String, predicate: String): IndexedList<String>
+    + getSubjectsByPredicate(predicate: String): IndexedList<String>
+}
+
+class RDFData {
+    - tipos: String[]
+    - tripletas: Tripleta[]
+}
+
+class Tripleta {
+    - s: String
+    - p: String
+    - o: String
+
+}
+
+' ========= NODOS =========
+
+
+class GraphNode<DN> {
+    - data: DN
+    + getData(): DN
+    + setData(data: DN)
+}
+
+class EdgeGraph<DN, DA> {
+    - data: DA
+    - start: GraphNode<DN>
+    - end: GraphNode<DN>
+    + getStart(): GraphNode<DN>
+    + getEnd(): GraphNode<DN>
+    + getData(): DA
+    + setData(data: DA)
+}
+
+Graph o-- GraphNode
+Graph o-- EdgeGraph
+
+' RDF usa Graph
+RDF --> Graph
+
+' RDF usa datos
+RDF o-- Tripleta
+RDF o-- RDFData
+
+' Edge depende de nodos
+EdgeGraph --> GraphNode
+
+@enduml

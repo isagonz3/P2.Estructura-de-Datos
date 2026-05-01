@@ -1,0 +1,151 @@
+@startuml
+package Árboles {
+
+interface Tree<T> {
+    + add(data: T)
+    + remove(data: T)
+    + isEmpty(): boolean
+    + getHeight(): int
+    + getPath(data: T): IndexedList<T>
+}
+
+interface DuplicateSearchTree<T> {
+    + removeOne(data: T)
+}
+
+interface BinaryTree<T> {
+    + getLeftSubtree()
+    + getRightSubtree()
+    + getDegree(): int
+    + getPreOrder(): IndexedList<T>
+    + getInOrder(): IndexedList<T>
+    + getPostOrder(): IndexedList<T>
+    + getLevelData(level: int): IndexedList<T>
+}
+
+}
+
+package Nodos.Arboles.Binarios {
+
+abstract class AbstractBinaryNode<T, N> {
+    - left: N
+    - right: N
+    - height: int
+
+    + getData(): T
+    + getLeft(): N
+    + getRight(): N
+    + setLeft(node: N)
+    + setRight(node: N)
+    + getHeight(): int
+    + updateHeight(): void
+    + getDegree(): int
+}
+
+class BinaryNode<T>
+class BinaryNodeDuplicate<T> {
+    + addData(data: T)
+    + getAllData(): IndexedList<T>
+}
+
+}
+
+package Nodos.Arboles.Narios {
+
+class NaryNode<T> {
+    - data: T
+    - children: IndexedList<NaryNode<T>>
+
+    + getData(): T
+    + getChildren(): IndexedList<NaryNode<T>>
+    + addChild(child: NaryNode<T>)
+}
+
+}
+
+package Árboles.ArbolBinario {
+
+abstract class AbstractBinaryTree<T, N> {
+    - root: N
+
+    + getRoot(): N
+    + search(data: T): N
+    + isEmpty(): boolean
+    + getHeight(): int
+    + getPath(data: T): IndexedList<T>
+    + remove(data: T)
+}
+
+abstract class AbstractBalancedBinaryTree<T, N> {
+    + balance(node: N): N
+    + rotateLeft(node: N): N
+    + rotateRight(node: N): N
+}
+
+}
+
+package Árboles.ArbolBinario.Simple {
+
+class BST<T> {
+    + add(data: T)
+}
+
+class BSTD<T> {
+    + add(data: T)
+    + removeOne(data: T)
+}
+
+}
+
+package Árboles.ArbolBinario.Balanceado {
+
+class BBST<T> {
+    + add(data: T)
+}
+
+class BBSTD<T> {
+    + add(data: T)
+    + removeOne(data: T)
+}
+
+}
+
+class NaryTree<T> {
+    - root: NaryNode<T>
+
+    + add(data: T)
+    + add(data: T, parent: T)
+    + remove(data: T)
+    + search(data: T): NaryNode<T>
+    + getHeight(): int
+    + getPath(data: T): IndexedList<T>
+    + getPreOrder(): IndexedList<T>
+    + getPostOrder(): IndexedList<T>
+}
+
+AbstractBinaryTree ..|> Tree
+AbstractBalancedBinaryTree --|> AbstractBinaryTree
+NaryTree ..|> Tree
+BSTD ..|> DuplicateSearchTree
+BBSTD ..|> DuplicateSearchTree
+
+
+BST --|> AbstractBinaryTree
+BSTD --|> AbstractBinaryTree
+BBST --|> AbstractBalancedBinaryTree
+BBSTD --|> AbstractBalancedBinaryTree
+
+
+BinaryNode --|> AbstractBinaryNode
+BinaryNodeDuplicate --|> AbstractBinaryNode
+
+
+AbstractBinaryTree o-- AbstractBinaryNode
+AbstractBinaryNode o-- AbstractBinaryNode : left/right
+NaryTree o-- NaryNode
+NaryNode o-- NaryNode : children
+
+AbstractBinaryTree --> IndexedList
+NaryTree --> IndexedList
+
+@enduml
