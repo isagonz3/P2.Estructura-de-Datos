@@ -1,0 +1,44 @@
+{
+  "tripletas": [
+    {
+      "s": "persona:Albert Einstein",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "premio:Nobel",
+      "o": "premio:1921"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "nace_en",
+      "o": "lugar:Varsovia"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "premio:Nobel",
+      "o": "premio:1903"
+    },
+    {
+      "s": "persona:Otro Fisico",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Otro Fisico",
+      "p": "premio:Nobel",
+      "o": "premio:1910"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "conoce",
+      "o": "persona:Marie Curie"
+    },
+    {
+      "s": "persona:Antonio",
+      "p": "nace_en",
+      "o": "lugar:Villarrubia de los Caballeros"
+    }
+  ]
+}

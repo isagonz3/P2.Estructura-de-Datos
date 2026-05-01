@@ -1,0 +1,14 @@
+{
+  "tripletas":[
+    {
+      "s":"persona:A",
+      "p":"nace_en",
+      "o":"lugar:X"
+    },
+    {
+      "s":"persona:B",
+      "p":"nace_en",
+      "o":"lugar:Y"
+    }
+  ]
+}
