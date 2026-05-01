@@ -1,4 +1,4 @@
-package Descartadas.Isabel.EL2a;
+package src/Seleccionadas/ArbolBinario_Recursivo
 
 public class ArbolBinarioDeBusquedaEnteros extends ArbolBinarioDeBusqueda<Integer> {
     public ArbolBinarioDeBusquedaEnteros() {
