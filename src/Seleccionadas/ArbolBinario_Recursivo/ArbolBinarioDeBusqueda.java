@@ -1,4 +1,4 @@
-package Seleccionadas/ArbolBinario_Recursivo;
+package Seleccionadas.ArbolBinario_Recursivo;
 
 import Descartadas.Isabel.TADs.Cola;
 import Descartadas.Isabel.TADs.Lista;
