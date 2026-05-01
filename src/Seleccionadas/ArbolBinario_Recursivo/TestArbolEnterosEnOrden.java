@@ -1,4 +1,4 @@
-package Descartadas.Isabel.EL2a;
+package Seleccionadas.ArbolBinario_Recursivo
 
 import Descartadas.Isabel.TADs.Lista;
 
