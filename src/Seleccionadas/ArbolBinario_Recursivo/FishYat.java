@@ -1,4 +1,4 @@
-package Descartadas.Isabel.EL2a;
+package Seleccionadas.ArbolBinario_Recursivo
 
 
 /*Creamos una clase para poder guardar los valores de 0 a 128 de forma aleatoria.
