@@ -1,4 +1,4 @@
-package src/Seleccionadas/ArbolBinario_Recursivo
+package Seleccionadas.ArbolBinario_Recursivo
 
 public class ArbolBinarioDeBusquedaEnteros extends ArbolBinarioDeBusqueda<Integer> {
     public ArbolBinarioDeBusquedaEnteros() {
