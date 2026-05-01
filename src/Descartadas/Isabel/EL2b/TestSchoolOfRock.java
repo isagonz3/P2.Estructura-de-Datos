@@ -2,6 +2,7 @@ package EL2b;
 
 import TADs.Lista;
 
+//Grafo basado en la película School Of Rock (2003), protagonizada por Jack Black
 public class TestSchoolOfRock {
     public static void main(String[] args) {
         String ruta = "src/EL2b/SchoolOfRock.json";
