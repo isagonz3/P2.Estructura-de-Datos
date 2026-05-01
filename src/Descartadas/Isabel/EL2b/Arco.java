@@ -5,7 +5,7 @@ public class Arco implements Comparable<Arco> {
     protected Nodo origen;
     protected Nodo destino;
 
-    public Arco(String predicate, Nodo origen, Nodo destino) {
+    public Arco(Nodo origen, String predicate, Nodo destino) {
         this.origen = origen;
         this.destino = destino;
         this.predicate = predicate;
@@ -37,11 +37,12 @@ public class Arco implements Comparable<Arco> {
 
     @Override
     public int compareTo(Arco o) {
-        return  this.predicate.compareTo(o.predicate);
+        return  0;
     }
 
     @Override
     public String toString() {
         return origen + "---[ " + predicate + " ]---> " + destino;
     }
+
 }

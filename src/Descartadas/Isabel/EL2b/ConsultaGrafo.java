@@ -4,13 +4,14 @@ import Descartadas.Isabel.TADs.Lista;
 
 public class ConsultaGrafo {
 
-    private Nodo getCiudad(GrafoDeConocimiento grafo, Nodo persona) {
+    private Nodo getCiudad(GrafoDeConocimiento grafo, String nombre) {
+        Nodo persona = getNodoPersona(grafo, nombre);
         for (int i = 0; i < grafo.getArcos().getSize(); i++) {
-           Arco arco = grafo.getArcos().get(i);
+            Arco arco = grafo.getArcos().get(i);
 
-           if(arco.getOrigen().equals(persona) && arco.getPredicate().equals("nace_en")) {
-               return arco.getDestino();
-           }
+            if(arco.getOrigen().equals(persona) && arco.getPredicate().equals("nace_en")) {
+                return arco.getDestino();
+            }
         }
         return null;
     }
@@ -25,18 +26,19 @@ public class ConsultaGrafo {
         return null;
     }
 
-    private boolean tieneNobel(GrafoDeConocimiento grafo, Nodo persona) {
+    private boolean tieneNobel(GrafoDeConocimiento grafo, String nombre) {
+        Nodo persona = getNodoPersona(grafo, nombre);
         for (int i = 0; i < grafo.getArcos().getSize(); i++) {
             Arco arco = grafo.getArcos().get(i);
 
-            if(arco.getOrigen().equals(persona) && arco.getPredicate().equals("premio") && arco.getDestino().getDato().equals("Nobel")) {
+            if(arco.getOrigen().equals(persona) && arco.getPredicate().equals("premio:Nobel")) {
                 return true;
             }
         }
         return false;
     }
 
-    public Lista<Nodo> mismaCiudadEinstein(GrafoDeConocimiento grafo, Nodo einstein) {
+    public Lista<Nodo> mismaCiudadEinstein(GrafoDeConocimiento grafo, String einstein) {
 
         Lista<Nodo> mismaCiudadEinstein = new Lista<>();
         Nodo ciudadEinstein = getCiudad(grafo, einstein);
@@ -45,10 +47,11 @@ public class ConsultaGrafo {
             return mismaCiudadEinstein;
         }
 
-        for (int i = 0; i < grafo.getArcos().getSize(); i++) {
+        for (int i = 0; i < grafo.getNodos().getSize(); i++) {
             Nodo nodo = grafo.getNodos().get(i);
+            String dato = nodo.getDato();
             if(nodo.getType().equals("persona") && !nodo.equals(einstein)) {
-                Nodo ciudad = getCiudad(grafo, nodo);
+                Nodo ciudad = getCiudad(grafo, dato);
                 if (ciudad != null && ciudad.equals(ciudadEinstein)) {
                     mismaCiudadEinstein.add(nodo);
                 }
@@ -62,12 +65,13 @@ public class ConsultaGrafo {
 
         for (int i = 0; i < grafo.getNodos().getSize(); i++) {
             Nodo nodo = grafo.getNodos().get(i);
-            if(nodo.getType().equals("persona") && tieneNobel(grafo, nodo)) {
-                    Nodo ciudad = getCiudad(grafo, nodo);
+            String dato = nodo.getDato();
+            if(nodo.getType().equals("persona") && tieneNobel(grafo, dato)) {
+                Nodo ciudad = getCiudad(grafo, dato);
 
-                    if(ciudad != null && !ciudadNobel.contains(ciudad)) {
-                        ciudadNobel.add(ciudad);
-                    }
+                if(ciudad != null && !ciudadNobel.contains(ciudad)) {
+                    ciudadNobel.add(ciudad);
+                }
             }
         }
         return ciudadNobel;

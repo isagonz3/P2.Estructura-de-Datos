@@ -5,9 +5,9 @@ import Descartadas.Isabel.TADs.Lista;
 
 public class Camino {
     /*Usamos la búsqueda por anchura para obtener el camino más rápido
-    * o más corto entre dos nodos. La generación de caminos por anchura/amplitud
-    * en grafos se comporta como una cola, el primer nodo que se visita es
-    * el primero que "sale"*/
+     * o más corto entre dos nodos. La generación de caminos por anchura/amplitud
+     * en grafos se comporta como una cola, el primer nodo que se visita es
+     * el primero que "sale"*/
 
     public Lista<Nodo> caminoBFS(GrafoDeConocimiento grafo, Nodo origen, Nodo destino) {
 
@@ -51,9 +51,9 @@ public class Camino {
     }
 
     /*Usamos la búsqueda por profundidad para poder obtener cualquiera de los caminos
-    * posibles entre dos nodos. La generación de caminos por profundidad se comporta
-    * como una pila, aunque también se puede realizar por recursividad. Para hacerlo recursivo,
-    * necesitamos crear un metodo auxiliar.*/
+     * posibles entre dos nodos. La generación de caminos por profundidad se comporta
+     * como una pila, aunque también se puede realizar por recursividad. Para hacerlo recursivo,
+     * necesitamos crear un metodo auxiliar.*/
 
     public Lista<Nodo> caminoDFS(GrafoDeConocimiento grafo, Nodo origen, Nodo destino) {
 

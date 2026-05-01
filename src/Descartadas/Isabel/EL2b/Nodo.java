@@ -6,13 +6,11 @@ public class Nodo implements Comparable<Nodo> {
     protected String dato;
     protected String type;
     Lista<Arco> arcosOrigen;
-    Lista<Arco> arcosDestino;
 
     public Nodo(String type, String dato) {
         this.type = type;
         this.dato = dato;
         this.arcosOrigen = new Lista<>();
-        this.arcosDestino = new Lista<>();
     }
 
     public String getDato() {
@@ -27,10 +25,6 @@ public class Nodo implements Comparable<Nodo> {
         return arcosOrigen;
     }
 
-    public Lista<Arco> getArcosDestino() {
-        return arcosDestino;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -42,11 +36,7 @@ public class Nodo implements Comparable<Nodo> {
 
     @Override
     public int compareTo(Nodo o) {
-        int cmp = this.type.compareTo(o.type);
-        if (cmp == 0) {
-            return this.dato.compareTo(o.dato);
-        }
-        return cmp;
+        return 0;
     }
 
     @Override

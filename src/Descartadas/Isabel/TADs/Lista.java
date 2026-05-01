@@ -125,16 +125,14 @@ public class Lista<T extends Comparable<T>>{
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-
-        for (int i = 0; i < size; i++) {
-            sb.append(get(i));
-            if (i < size - 1) sb.append(", ");
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < this.getSize(); i++) {
+            sb.append(this.get(i));
+            if (i < this.getSize() - 1) sb.append(", ");
         }
-
         sb.append("]");
         return sb.toString();
     }
+
 }
 

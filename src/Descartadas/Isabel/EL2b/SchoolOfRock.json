@@ -1,14 +1,13 @@
 {
   "Types":[
-    "Type",
     "Genre",
     "Artist",
     "SubGenre"
   ],
-  "Triples": [
-    {"s": "Type:Subject","p": "Type:Predicate","o": "Type:Object"},
+  "Triples":[
     {"s": "Genre:Jazz","p": "influenced","o": "Genre:Blues"},
     {"s": "Genre:Blues","p": "influenced","o": "Genre:R&B"},
+    {"s": "Genre:Blues", "p": "influenced", "o": "Genre:Country"},
     {"s": "Genre:R&B","p": "influenced","o": "SubGenre:Rockabilly"},
     {"s": "Genre:R&B","p": "influenced","o": "SubGenre:Hard Rock"},
     {"s": "Genre:R&B","p": "influenced","o": "SubGenre:Doo Wop"},
@@ -36,7 +35,7 @@
     {"s": "SubGenre:Hard Rock","p": "influenced","o": "SubGenre:New Wave"},
     {"s": "SubGenre:Hard Rock","p": "influenced","o": "SubGenre:Grunge"},
     {"s": "SubGenre:Hard Rock","p": "influenced","o": "SubGenre:Punk"},
-    {"s": "SubGenre:Prog Rock","p": "influenced","o": "SubGenre:?"},
+    {"s": "SubGenre:Prog Rock","p": "influenced","o": "SubGenre:Experimental"},
     {"s": "SubGenre:New Wave","p": "influenced","o": "SubGenre:Grunge"},
     {"s": "SubGenre:Punk","p": "influenced","o": "SubGenre:Heavy Metal"},
     {"s": "SubGenre:Punk","p": "influenced","o": "SubGenre:80's Punk"},
@@ -141,9 +140,9 @@
     {"s": "SubGenre:Glitter/Glam","p": "includes","o": "Artist:Alice Cooper"},
     {"s": "SubGenre:Glitter/Glam","p": "includes","o": "Artist:T.Rex"},
     {"s": "SubGenre:Glitter/Glam","p": "includes","o": "Artist:Roxy Music"},
-    {"s": "SubGenre:?","p": "includes","o": "Artist:Zappa"},
-    {"s": "SubGenre:?","p": "includes","o": "Artist:Can"},
-    {"s": "SubGenre:?","p": "includes","o": "Artist:Captain Beefheart"},
+    {"s": "SubGenre:Experimental","p": "includes","o": "Artist:Zappa"},
+    {"s": "SubGenre:Experimental","p": "includes","o": "Artist:Can"},
+    {"s": "SubGenre:Experimental","p": "includes","o": "Artist:Captain Beefheart"},
     {"s": "Genre:Rap","p": "includes","o": "Artist:Dr. Dre"},
     {"s": "Genre:Rap","p": "includes","o": "Artist:The Geto Boys"},
     {"s": "Genre:Rap","p": "includes","o": "Artist:Public Enemy"},
