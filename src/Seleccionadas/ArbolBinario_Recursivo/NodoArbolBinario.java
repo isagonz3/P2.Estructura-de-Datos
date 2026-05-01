@@ -1,4 +1,4 @@
-package Descartadas.Isabel.EL2a;
+package Seleccionadas.ArbolBinario_Recursivo
 
 public class NodoArbolBinario<T  extends Comparable<T>> implements Comparable<NodoArbolBinario<T>> {
 
